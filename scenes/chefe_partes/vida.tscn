@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://PNG/Enemies/powerupRed.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+resource_name = "vida_chefe"
+script/source = "extends Node2D
+
+export (Texture) var textura
+
+func _ready():
+	get_owner().connect(\"vida_mudou\", self, \"_on_vida_mudou\")
+	pass
+	
+	
+func _process(delta):
+	pass
+
+func _on_vida_mudou():
+	update()
+	
+
+func _draw():
+	var vidas = get_owner().vida
+	for n in range(0, vidas):
+		draw_texture(textura, Vector2(n * (textura.get_width()), 0))"
+
+[node name="vida" type="Node2D"]
+position = Vector2( -45, 100 )
+script = SubResource( 1 )
+textura = ExtResource( 1 )

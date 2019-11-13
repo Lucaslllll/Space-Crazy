@@ -1,0 +1,175 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://PNG/Effects/star2.png" type="Texture" id=1]
+[ext_resource path="res://PNG/Background/starSmall.png" type="Texture" id=2]
+
+[node name="ParallaxEfeitos" type="ParallaxBackground"]
+layer = 0
+
+[node name="estrelas" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 0, 720 )
+
+[node name="estrela" type="Sprite" parent="estrelas"]
+position = Vector2( 930.84, 161.594 )
+texture = ExtResource( 1 )
+
+[node name="estrela1" type="Sprite" parent="estrelas"]
+position = Vector2( 1131.34, 155.79 )
+texture = ExtResource( 1 )
+
+[node name="estrela2" type="Sprite" parent="estrelas"]
+position = Vector2( 45.8182, 32.0937 )
+texture = ExtResource( 1 )
+
+[node name="estrela3" type="Sprite" parent="estrelas"]
+position = Vector2( 765.094, 170.977 )
+texture = ExtResource( 1 )
+
+[node name="estrela4" type="Sprite" parent="estrelas"]
+position = Vector2( 618.841, 441.609 )
+texture = ExtResource( 1 )
+
+[node name="estrela5" type="Sprite" parent="estrelas"]
+position = Vector2( 320.084, 417.873 )
+scale = Vector2( 0.907146, 1.04836 )
+texture = ExtResource( 1 )
+
+[node name="estrela6" type="Sprite" parent="estrelas"]
+position = Vector2( 526.219, 79.9427 )
+texture = ExtResource( 1 )
+
+[node name="estrela7" type="Sprite" parent="estrelas"]
+position = Vector2( 910.284, 62.5156 )
+texture = ExtResource( 1 )
+
+[node name="estrela8" type="Sprite" parent="estrelas"]
+position = Vector2( 74.1087, 260.605 )
+texture = ExtResource( 1 )
+
+[node name="estrela9" type="Sprite" parent="estrelas"]
+position = Vector2( 66.0701, 135.887 )
+scale = Vector2( 0.860719, 0.854916 )
+texture = ExtResource( 1 )
+
+[node name="estrela10" type="Sprite" parent="estrelas"]
+position = Vector2( 841.608, 325.574 )
+scale = Vector2( 0.582158, 0.66147 )
+texture = ExtResource( 1 )
+
+[node name="estrela11" type="Sprite" parent="estrelas"]
+position = Vector2( 445.611, 333.492 )
+scale = Vector2( 0.814292, 0.903277 )
+texture = ExtResource( 1 )
+
+[node name="estrela12" type="Sprite" parent="estrelas"]
+position = Vector2( 371.536, 206.306 )
+scale = Vector2( 0.860719, 0.854916 )
+texture = ExtResource( 1 )
+
+[node name="estrela13" type="Sprite" parent="estrelas"]
+position = Vector2( 787.025, 422.005 )
+texture = ExtResource( 1 )
+
+[node name="estrela14" type="Sprite" parent="estrelas"]
+position = Vector2( 421.937, 50.8428 )
+texture = ExtResource( 1 )
+
+[node name="estrela15" type="Sprite" parent="estrelas"]
+position = Vector2( 576.033, 321.611 )
+texture = ExtResource( 1 )
+
+[node name="estrela16" type="Sprite" parent="estrelas"]
+position = Vector2( 240.853, 441.23 )
+texture = ExtResource( 1 )
+
+[node name="estrela17" type="Sprite" parent="estrelas"]
+position = Vector2( 945.162, 499.673 )
+texture = ExtResource( 1 )
+
+[node name="estrela18" type="Sprite" parent="estrelas"]
+position = Vector2( 1085.12, 396.563 )
+texture = ExtResource( 1 )
+
+[node name="estrela19" type="Sprite" parent="estrelas"]
+position = Vector2( 559.911, 615.954 )
+texture = ExtResource( 1 )
+
+[node name="estrela20" type="Sprite" parent="estrelas"]
+position = Vector2( 202.235, 586.029 )
+texture = ExtResource( 1 )
+
+[node name="estrela21" type="Sprite" parent="estrelas"]
+position = Vector2( 1036.61, 620.289 )
+texture = ExtResource( 1 )
+
+[node name="estrelinhas" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.75, 0.75 )
+motion_mirroring = Vector2( 0, 480 )
+
+[node name="estrelinha" type="Sprite" parent="estrelinhas"]
+position = Vector2( 1112.54, 463.63 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha2" type="Sprite" parent="estrelinhas"]
+position = Vector2( 96.1381, 77.3215 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha3" type="Sprite" parent="estrelinhas"]
+position = Vector2( 805.038, 110.747 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha4" type="Sprite" parent="estrelinhas"]
+position = Vector2( 465.011, 426.728 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha5" type="Sprite" parent="estrelinhas"]
+position = Vector2( 705.347, 296.963 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha6" type="Sprite" parent="estrelinhas"]
+position = Vector2( 832.954, 197.815 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha7" type="Sprite" parent="estrelinhas"]
+position = Vector2( 1209.82, 104.397 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha8" type="Sprite" parent="estrelinhas"]
+position = Vector2( 1200.93, 249.281 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha9" type="Sprite" parent="estrelinhas"]
+position = Vector2( 1192.54, 121.958 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha10" type="Sprite" parent="estrelinhas"]
+position = Vector2( 1122.63, 555.134 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha11" type="Sprite" parent="estrelinhas"]
+position = Vector2( 344.247, 105.024 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha12" type="Sprite" parent="estrelinhas"]
+position = Vector2( 465.419, 194.47 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha13" type="Sprite" parent="estrelinhas"]
+position = Vector2( 257.696, 145.791 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha14" type="Sprite" parent="estrelinhas"]
+position = Vector2( 1137.5, 298.734 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha15" type="Sprite" parent="estrelinhas"]
+position = Vector2( 1200.38, 376.953 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha16" type="Sprite" parent="estrelinhas"]
+position = Vector2( 1200.87, 47.951 )
+texture = ExtResource( 2 )
+
+[node name="estrelinha17" type="Sprite" parent="estrelinhas"]
+position = Vector2( 200.451, 269.288 )
+texture = ExtResource( 2 )

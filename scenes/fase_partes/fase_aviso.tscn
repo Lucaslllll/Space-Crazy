@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/fase_aviso.gd" type="Script" id=1]
+[ext_resource path="res://PNG/custom/fase2_aviso.png" type="Texture" id=2]
+
+[node name="fase2_aviso" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 337.316, 250.448 )
+scale = Vector2( 0.526906, 0.624296 )
+texture = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

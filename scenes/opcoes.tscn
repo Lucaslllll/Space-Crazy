@@ -1,0 +1,154 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://PNG/Background/back.png" type="Texture" id=1]
+[ext_resource path="res://fonts/Acme-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://touch/flatDark46.png" type="Texture" id=3]
+[ext_resource path="res://touch/flatDark44.png" type="Texture" id=4]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+func _ready():
+	# AudioServer.set_bus_volume_db(AudioServer.get_bus_index(\"Master\"), 5)
+	pass
+	
+func _input(event):
+	if event.is_action_pressed(\"voltar\"):
+		get_tree().change_scene(\"res://scenes/menu.tscn\")
+	if event.is_action_pressed(\"som_on\"):
+		ligar()
+	if event.is_action_pressed(\"som_off\"):
+		desligar()
+
+
+
+func _on_Ligar_pressed():
+	ligar()
+	
+func _on_Desligar_pressed():
+	desligar()
+
+
+func ligar():
+	AudioServer.set_bus_mute(AudioServer.get_bus_index(\"Master\"), false)
+	
+	
+func desligar():
+	AudioServer.set_bus_mute(AudioServer.get_bus_index(\"Master\"), true)
+
+	
+
+func _on_reset_pressed():
+	game.desafio = false
+	game.salvar_dados()
+	get_tree().reload_current_scene()
+"
+
+[sub_resource type="DynamicFont" id=2]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 80
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 45
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 45
+font_data = ExtResource( 2 )
+
+[node name="opcoes" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect"]
+margin_right = 1288.0
+margin_bottom = 718.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/CenterContainer"]
+margin_left = 500.0
+margin_top = 110.0
+margin_right = 787.0
+margin_bottom = 607.0
+
+[node name="Label" type="Label" parent="TextureRect/CenterContainer/VBoxContainer"]
+margin_right = 287.0
+margin_bottom = 127.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
+text = "Opcoes"
+
+[node name="Label2" type="Label" parent="TextureRect/CenterContainer/VBoxContainer"]
+margin_top = 131.0
+margin_right = 287.0
+margin_bottom = 233.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Som"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/CenterContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 237.0
+margin_right = 287.0
+margin_bottom = 301.0
+alignment = 1
+
+[node name="Ligar" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 9.0
+margin_right = 111.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 4 )
+text = "Ligar"
+flat = true
+
+[node name="Desligar" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 115.0
+margin_right = 277.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 5 )
+text = "Desligar"
+flat = true
+
+[node name="Label3" type="Label" parent="TextureRect/CenterContainer/VBoxContainer"]
+margin_top = 305.0
+margin_right = 287.0
+margin_bottom = 407.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Resetar"
+align = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TextureRect/CenterContainer/VBoxContainer"]
+margin_top = 411.0
+margin_right = 287.0
+margin_bottom = 497.0
+alignment = 1
+
+[node name="reset" type="Button" parent="TextureRect/CenterContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 97.0
+margin_right = 189.0
+margin_bottom = 86.0
+custom_fonts/font = SubResource( 4 )
+icon = ExtResource( 3 )
+flat = true
+
+[node name="voltar" type="TouchScreenButton" parent="."]
+position = Vector2( 1070, 530 )
+scale = Vector2( 1.4, 1.4 )
+normal = ExtResource( 4 )
+action = "voltar"
+visibility_mode = 1
+[connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/HBoxContainer/Ligar" to="." method="_on_Ligar_pressed"]
+[connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/HBoxContainer/Desligar" to="." method="_on_Desligar_pressed"]
+[connection signal="pressed" from="TextureRect/CenterContainer/VBoxContainer/HBoxContainer2/reset" to="." method="_on_reset_pressed"]

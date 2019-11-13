@@ -1,0 +1,126 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scripts/HUB.gd" type="Script" id=1]
+[ext_resource path="res://touch/flatDark13.png" type="Texture" id=2]
+[ext_resource path="res://touch/flatDark47.png" type="Texture" id=3]
+[ext_resource path="res://touch/flatDark48.png" type="Texture" id=4]
+[ext_resource path="res://touch/flatDark23.png" type="Texture" id=5]
+[ext_resource path="res://touch/flatDark24.png" type="Texture" id=6]
+[ext_resource path="res://touch/flatDark25.png" type="Texture" id=7]
+[ext_resource path="res://touch/flatDark26.png" type="Texture" id=8]
+[ext_resource path="res://fonts/STJEDISE.TTF" type="DynamicFontData" id=9]
+[ext_resource path="res://PNG/Power-ups/powerupYellow.png" type="Texture" id=10]
+[ext_resource path="res://PNG/Power-ups/bolt_gold.png" type="Texture" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+font_data = ExtResource( 9 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Label
+
+
+
+func _ready():
+	game.connect(\"score_mudou\", self, \"_on_score_mudou\")
+	pass
+
+
+func _on_score_mudou():
+	set_text(str(game.score))"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Node2D
+
+export (Texture) var textura
+
+
+func _ready():
+	game.connect(\"nave_vida_mudou\", self, \"_on_vida_mudou\")
+	pass
+	
+func _process(delta):
+	pass
+
+func _on_vida_mudou():
+	update()
+	pass
+	
+func _draw():
+	for n in range(0, game.getNaveVida()):
+		draw_texture(textura, Vector2(n * (textura.get_width()-5), 0))"
+
+[node name="HUB" type="CanvasLayer"]
+layer = 15
+script = ExtResource( 1 )
+
+[node name="pausa" type="TouchScreenButton" parent="."]
+pause_mode = 2
+position = Vector2( 1180, 140 )
+scale = Vector2( 2.13681, 1.86352 )
+normal = ExtResource( 2 )
+action = "pause"
+visibility_mode = 1
+
+[node name="canhao" type="TouchScreenButton" parent="."]
+position = Vector2( 1134.55, 404.711 )
+scale = Vector2( 1.66348, 1.44911 )
+normal = ExtResource( 3 )
+action = "canhao"
+visibility_mode = 1
+
+[node name="atirar" type="TouchScreenButton" parent="."]
+position = Vector2( 997.451, 522.78 )
+scale = Vector2( 2.16469, 2.12827 )
+normal = ExtResource( 4 )
+action = "tiro"
+visibility_mode = 1
+
+[node name="esquerda" type="TouchScreenButton" parent="."]
+position = Vector2( 17.544, 480 )
+scale = Vector2( 1.6, 1.6 )
+normal = ExtResource( 5 )
+action = "esquerda"
+visibility_mode = 1
+
+[node name="direita" type="TouchScreenButton" parent="."]
+position = Vector2( 270.381, 480 )
+scale = Vector2( 1.6, 1.6 )
+normal = ExtResource( 6 )
+action = "direita"
+visibility_mode = 1
+
+[node name="cima" type="TouchScreenButton" parent="."]
+position = Vector2( 145, 366.01 )
+scale = Vector2( 1.6, 1.6 )
+normal = ExtResource( 7 )
+action = "cima"
+visibility_mode = 1
+
+[node name="baixo" type="TouchScreenButton" parent="."]
+position = Vector2( 145, 572.957 )
+scale = Vector2( 1.6, 1.6 )
+normal = ExtResource( 8 )
+action = "baixo"
+visibility_mode = 1
+
+[node name="pontuacao" type="Label" parent="."]
+margin_left = 1100.05
+margin_top = -2.52224
+margin_right = 1192.05
+margin_bottom = 72.4778
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 1 )
+text = "0
+"
+uppercase = true
+script = SubResource( 2 )
+
+[node name="vidas" type="Node2D" parent="."]
+position = Vector2( 40, 3 )
+script = SubResource( 3 )
+textura = ExtResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 15, 18.899 )
+texture = ExtResource( 11 )

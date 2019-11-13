@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/Chefao.gd" type="Script" id=1]
+[ext_resource path="res://PNG/Enemies/spiked ship 3.PNG" type="Texture" id=2]
+[ext_resource path="res://scenes/chefe_partes/vida.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/chefe_partes/explosao.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 96.9378
+
+[node name="Chefao" type="Area2D"]
+script = ExtResource( 1 )
+velocidade = 200
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="P_esquerda" type="Position2D" parent="."]
+position = Vector2( 60, 100 )
+
+[node name="P_centro" type="Position2D" parent="."]
+position = Vector2( 0, 120 )
+
+[node name="P_direita" type="Position2D" parent="."]
+position = Vector2( -60, 100 )
+
+[node name="vida" parent="." instance=ExtResource( 3 )]
+
+[node name="explosao" parent="." instance=ExtResource( 4 )]
+[connection signal="area_entered" from="." to="." method="_on_inimigo_area_entered"]

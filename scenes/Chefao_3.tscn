@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/Chefao_3.gd" type="Script" id=1]
+[ext_resource path="res://PNG/Enemies/chefe_3.png" type="Texture" id=2]
+[ext_resource path="res://scenes/chefe_partes/vida.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/chefe_partes/explosao.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 82.0101
+height = 47.7653
+
+[node name="Chefao_3" type="Area2D"]
+script = ExtResource( 1 )
+intervalo = 0.7
+velocidade = 120
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+flip_v = true
+
+[node name="Colli" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="P_esquerda" type="Position2D" parent="."]
+position = Vector2( -50, 10 )
+
+[node name="P_centro" type="Position2D" parent="."]
+position = Vector2( 0, 150 )
+
+[node name="P_direita" type="Position2D" parent="."]
+position = Vector2( 50, 10 )
+
+[node name="vida" parent="." instance=ExtResource( 3 )]
+position = Vector2( -49.266, 133.275 )
+
+[node name="explosao" parent="." instance=ExtResource( 4 )]
+[connection signal="area_entered" from="." to="." method="_on_inimigo_area_entered"]

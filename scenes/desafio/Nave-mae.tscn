@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/Nave-mae.gd" type="Script" id=1]
+[ext_resource path="res://PNG/Enemies/nave-mae-d.png" type="Texture" id=2]
+[ext_resource path="res://scenes/chefe_partes/vida.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/chefe_partes/explosao.tscn" type="PackedScene" id=4]
+[ext_resource path="res://PNG/Effects/fire07.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+length = 1.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "hiper-velocidade"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 201.206, 94.3903 )
+
+[node name="Nave-mae" type="Area2D"]
+script = ExtResource( 1 )
+velocidade = 200
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+flip_v = true
+vframes = 4
+hframes = 2
+frame = 7
+
+[node name="Anima" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 1 )
+anims/hiper-velocidade = SubResource( 2 )
+
+[node name="Colli" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="P_ee" type="Position2D" parent="."]
+position = Vector2( -145, 180 )
+
+[node name="P_ed" type="Position2D" parent="."]
+position = Vector2( -62, 120 )
+
+[node name="P_de" type="Position2D" parent="."]
+position = Vector2( 57, 120 )
+
+[node name="P_dd" type="Position2D" parent="."]
+position = Vector2( 140, 180 )
+
+[node name="vida" parent="." instance=ExtResource( 3 )]
+position = Vector2( -50, 140 )
+
+[node name="explosao" parent="." instance=ExtResource( 4 )]
+
+[node name="Particles2D" type="CPUParticles2D" parent="."]
+visible = false
+emitting = false
+explosiveness = 0.35
+texture = ExtResource( 5 )
+flag_align_y = true
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 266.52
+damping = 61.96
+[connection signal="area_entered" from="." to="." method="_on_inimigo_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/chefe-v1-piano.ogg-7a75fb77bab8340e9f611a81a0d27e9e.oggstr"
+
+[deps]
+
+source_file="res://music/chefe-v1-piano.ogg"
+dest_files=[ "res://.import/chefe-v1-piano.ogg-7a75fb77bab8340e9f611a81a0d27e9e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

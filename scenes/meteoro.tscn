@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/meteoro.gd" type="Script" id=1]
+[ext_resource path="res://PNG/Meteors/meteorBrown_big3.png" type="Texture" id=2]
+[ext_resource path="res://scenes/meteoro_partes/anima.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/meteoro_partes/Particles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/meteoro_partes/explosao.tscn" type="PackedScene" id=5]
+
+[node name="meteoro" type="Area2D"]
+gravity_point = true
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 0.960784, 0.964706, 0.976471, 1 )
+texture = ExtResource( 2 )
+
+[node name="coli_meteoro" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -9.97245, -39.4157, 28.9122, -26.9298, 43.1818, 1.60939, 20.7072, 38.7103, -26.7392, 32.6457, -40.2953, 14.452, -43.1492, -19.0815 )
+
+[node name="anima" parent="." instance=ExtResource( 3 )]
+
+[node name="Particles" parent="." instance=ExtResource( 4 )]
+emitting = true
+
+[node name="explosao" parent="." instance=ExtResource( 5 )]
+[connection signal="area_entered" from="." to="." method="_on_meteoro_area_entered"]

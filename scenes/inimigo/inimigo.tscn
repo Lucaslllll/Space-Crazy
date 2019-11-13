@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scripts/inimigo.gd" type="Script" id=1]
+[ext_resource path="res://PNG/Enemies/enemyBlack5.png" type="Texture" id=2]
+[ext_resource path="res://PNG/Damage/exp2_0.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 27.9837
+
+[sub_resource type="Animation" id=2]
+resource_name = "destroy"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 14 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.0155373 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "iddle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.183908, 0.505747, 0.873563 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.74902, 0.458824, 1, 1, 0.388235, 0.0666667, 1, 1, 0.180392, 0, 1 )
+
+[node name="inimigo" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="PosC" type="Position2D" parent="."]
+position = Vector2( 0, 40 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.97643, -2.76698 )
+shape = SubResource( 1 )
+
+[node name="explosao" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 2.2, 2.2 )
+texture = ExtResource( 3 )
+vframes = 4
+hframes = 4
+
+[node name="Anima" type="AnimationPlayer" parent="explosao"]
+autoplay = "iddle"
+anims/destroy = SubResource( 2 )
+anims/iddle = SubResource( 3 )
+
+[node name="Particles" type="CPUParticles2D" parent="explosao"]
+scale = Vector2( 0.567701, 0.663279 )
+emitting = false
+amount = 12
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+damping = 100.0
+scale_amount = 8.0
+scale_amount_random = 1.0
+color_ramp = SubResource( 4 )
+[connection signal="area_entered" from="." to="." method="_on_inimigo_area_entered"]

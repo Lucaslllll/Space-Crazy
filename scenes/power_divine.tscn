@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/power_divine.gd" type="Script" id=1]
+[ext_resource path="res://PNG/Power-ups/pill_yellow.png" type="Texture" id=2]
+
+[node name="power_divine" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="colli" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -6.01093, -4.66687, 0.33799, -10.7397, 7.23899, -11.5679, 10.8275, -6.59915, 9.9994, -0.802303, 0.890068, 9.13514, -5.18282, 11.0674, -11.2557, 7.4789, -10.4276, 1.9581 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+[connection signal="area_entered" from="." to="." method="_on_power_divine_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

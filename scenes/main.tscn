@@ -1,0 +1,51 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://scenes/pauser.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Spawner_inimigo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Spawner_chefao.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Spawner_meteoro.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Spawner_efeito.tscn" type="PackedScene" id=7]
+[ext_resource path="res://music/space walk.ogg" type="AudioStream" id=8]
+[ext_resource path="res://scenes/HUB.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/ParallaxEfeitos.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/ParallaxBackground.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/power_duplo.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/power_simples.tscn" type="PackedScene" id=13]
+
+[node name="main" type="CanvasLayer"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="pauser" parent="." instance=ExtResource( 2 )]
+
+[node name="camera" parent="." instance=ExtResource( 3 )]
+
+[node name="Spawner_inimigo" parent="." instance=ExtResource( 4 )]
+
+[node name="Spawner_chefao" parent="." instance=ExtResource( 5 )]
+
+[node name="Spawner_meteoro" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
+
+[node name="Spawner_efeito" parent="." instance=ExtResource( 7 )]
+editor/display_folded = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
+
+[node name="HUB" parent="." instance=ExtResource( 9 )]
+
+[node name="ParallaxEfeitos" parent="." instance=ExtResource( 10 )]
+
+[node name="ParallaxBackground2" parent="." instance=ExtResource( 11 )]
+
+[node name="power_duplo" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1134.64, 131.862 )
+
+[node name="power_simples" parent="." instance=ExtResource( 13 )]
+position = Vector2( 172.89, 127.1 )

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://PNG/Background/back.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends ParallaxBackground
+
+#onready var mudar_textura = get_node(\"fundo/Sprite\").Texture
+
+
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Sprite
+
+
+func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = SubResource( 1 )
+
+[node name="fundo" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2( 0, 720 )
+
+[node name="Sprite" type="Sprite" parent="fundo"]
+position = Vector2( 639.93, 358.003 )
+scale = Vector2( 0.636364, 0.476801 )
+texture = ExtResource( 1 )
+script = SubResource( 2 )
