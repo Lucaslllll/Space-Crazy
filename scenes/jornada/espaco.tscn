@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://PNG/Background/menu-2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/pauser.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ParallaxEfeitos.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Spawner_inimigo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Spawner_meteoro.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/HUB.tscn" type="PackedScene" id=7]
+[ext_resource path="res://music/Sunstroke.ogg" type="AudioStream" id=8]
 
 [node name="espaco" type="CanvasLayer"]
 
@@ -16,6 +19,8 @@ motion_mirroring = Vector2( 0, 720 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -8, -3 )
+scale = Vector2( 1.0125, 1.00375 )
 texture = ExtResource( 1 )
 centered = false
 
@@ -30,3 +35,11 @@ centered = false
 [node name="Spawner_inimigo2" parent="." instance=ExtResource( 5 )]
 timeInicial = 2
 timeFinal = 10
+
+[node name="Spawner_meteoro" parent="." instance=ExtResource( 6 )]
+
+[node name="HUB" parent="." instance=ExtResource( 7 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true

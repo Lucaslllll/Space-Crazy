@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://PNG/Background/fase-2.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Camera2D
+
+var velocidade = 175
+
+
+func _ready():
+	set_process(true)
+
+
+func _process(delta):
+	set_offset(get_offset() + Vector2(0, -1) * velocidade * delta)
+	"
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+script = SubResource( 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 0, 720 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Parallaxmensagem" type="ParallaxBackground" parent="."]
+editor/display_folded = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallaxmensagem"]
+
+[node name="Sprite" type="Sprite" parent="Parallaxmensagem/ParallaxLayer"]

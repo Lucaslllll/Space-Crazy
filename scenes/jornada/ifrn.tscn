@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://PNG/custom/ifrn-logo-png-2.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Sprite
+#ifrn script
+
+var cima = -1 
+var baixo = 1
+var esquerda = -1
+var direita = 1
+
+var horizontal = [esquerda, direita]
+var vertical = [cima, baixo]
+
+var velocidade = 50
+var vezes = 0
+var estado
+
+func _ready():
+	pass
+
+func _process(delta):
+	var get_vertical = rand_range(0, 2)
+	var get_horizontal = rand_range(0, 2)
+	
+	if vezes == 0:
+		get_vertical = vertical[get_vertical]
+		get_horizontal = horizontal[get_horizontal]	
+		print(get_vertical)
+		
+		if get_position().x > 1222.704:
+			get_horizontal = -1
+		if get_position().x < 54.704:
+			get_horizontal = 1
+		if get_position().y < 40.75:
+			get_vertical = 1
+		if get_position().y > 670.749:
+			get_vertical = -1
+		estado = [get_vertical, get_horizontal]
+		vezes = 1
+		yield(get_tree().create_timer(.5), \"timeout\")
+	elif vezes == 1:
+		get_vertical = estado[0]
+		get_horizontal = estado[1]
+		vezes = 2
+		yield(get_tree().create_timer(.5), \"timeout\")
+	elif vezes == 2:
+		get_vertical = estado[0]
+		get_horizontal = estado[1]
+		vezes = 3
+		yield(get_tree().create_timer(.5), \"timeout\")
+	else:
+		get_vertical = estado[0]
+		get_horizontal = estado[1]
+		vezes = 0
+		yield(get_tree().create_timer(.5), \"timeout\")
+	
+	yield(get_tree().create_timer(.1), \"timeout\")
+	set_position(get_position() + Vector2(get_horizontal, get_vertical) * delta * velocidade)
+	
+	
+	"
+
+[node name="ifrn" type="Sprite"]
+position = Vector2( 182.25, 239.625 )
+scale = Vector2( 0.03, 0.03 )
+texture = ExtResource( 1 )
+script = SubResource( 1 )
