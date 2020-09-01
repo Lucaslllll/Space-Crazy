@@ -22,5 +22,4 @@ scale_amount_random = 1.0
 color = Color( 0.392157, 0.945098, 0.505882, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )

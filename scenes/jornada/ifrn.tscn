@@ -21,6 +21,8 @@ var estado
 func _ready():
 	pass
 
+
+
 func _process(delta):
 	var get_vertical = rand_range(0, 2)
 	var get_horizontal = rand_range(0, 2)
@@ -28,7 +30,7 @@ func _process(delta):
 	if vezes == 0:
 		get_vertical = vertical[get_vertical]
 		get_horizontal = horizontal[get_horizontal]	
-		print(get_vertical)
+		
 		
 		if get_position().x > 1222.704:
 			get_horizontal = -1

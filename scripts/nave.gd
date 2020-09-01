@@ -60,7 +60,7 @@ func _process(delta):
 		arma.disparar()
 	arma.atualiza(delta)
 	
-	if Input.is_action_pressed("canhao"):
+	if Input.is_action_just_pressed("canhao"):
 		if velocidade == 400:
 			velocidade = 1000
 			mostra()
